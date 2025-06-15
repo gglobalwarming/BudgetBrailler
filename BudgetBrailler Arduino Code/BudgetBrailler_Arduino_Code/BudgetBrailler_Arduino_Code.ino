@@ -47,9 +47,9 @@
   const int keyPinR3[1] = {12};//button numbers in row 3
 
   bool ButtonsPressed[13];//for converting digital KeyVal reads to which button is pressed, 0 if button not pressed, 1 if button pressed
-    const int dot1ButtonPressed = 2;
+    const int dot1ButtonPressed = 0;
     const int dot2ButtonPressed = 1;
-    const int dot3ButtonPressed = 0;
+    const int dot3ButtonPressed = 2;
     const int dot4ButtonPressed = 3;
     const int dot5ButtonPressed = 4;
     const int dot6ButtonPressed = 5;
@@ -215,7 +215,7 @@ void loop() {
   //LineNumber is tracked but not currently used
 void FunctionNextLine(){
   Serial.println("FunctionNextLine");
-  RMotor.step(CellStepsR);
+  RMotor.step(-CellStepsR);
   LineNumber++;
   FunctionBacklashAdjust();
 }
@@ -223,7 +223,7 @@ void FunctionNextLine(){
   //LineNumber is tracked but not currently used
 void FunctionPreviousLine(){
   Serial.println("FunctionPreviousLine");
-  RMotor.step(-CellStepsR);
+  RMotor.step(CellStepsR);
   LineNumber--;
   FunctionBacklashAdjust();
 }
